@@ -14,24 +14,25 @@ function BlockProgramming() {
 
   function workspaceDidChange(workspace) {
     const code = javascriptGenerator.workspaceToCode(workspace);
-    console.log(code);
     setJavascriptCode(code);
   }
 
   return (
     <>
       <div className="flex justify-center items-center w-[100vw]">
-        <div className="w-[35vw] h-[100vh] flex flex-col p-5">
+        <div className="flex-1 h-[100vh] flex flex-col p-5">
           <div className="text-2xl">Pablo - Block Programming </div>
           <div className="text-sm">Visually edit the drawing logic. </div>
-
           <div className="mt-4">
+
             <div> The following is the compiled code: </div>
-            <pre>
-              <code>
-                {javascriptCode}
-              </code>
-            </pre>
+            <div className="mt-4 p-2 bg-gray-700 text-white overflow-x-scroll">
+              <pre>
+                <code>
+                  {javascriptCode}
+                </code>
+              </pre>
+            </div>
           </div>
           <button className="mt-6"> Begin Sequence </button>
         </div>
@@ -39,7 +40,7 @@ function BlockProgramming() {
         <BlocklyWorkspace
           toolboxConfiguration={toolbox}
           initialXml={initialXml}
-          className="w-[100%] h-[100vh]"
+          className="h-[100vh] flex-[4]"
           workspaceConfiguration={{
             grid: {
               spacing: 20,
