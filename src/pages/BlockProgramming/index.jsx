@@ -1,8 +1,9 @@
-import "./customBlocks/custom_Blocks";
+import "../customBlocks/custom_Blocks";
 import React, { useState } from "react";
 import { BlocklyWorkspace } from "react-blockly";
 import { javascriptGenerator } from "blockly/javascript";
-import toolbox from "./toolbox/toolbox";
+import toolbox from "../toolbox/toolbox";
+import "./index.css";
 
 function BlockProgramming() {
   const [xml, setXml] = useState("");
@@ -13,25 +14,32 @@ function BlockProgramming() {
 
   function workspaceDidChange(workspace) {
     const code = javascriptGenerator.workspaceToCode(workspace);
+    console.log(code);
     setJavascriptCode(code);
   }
 
   return (
     <>
-      <div className="flex justify-center items-center">
-        <div className="w-[20vw] h-[100vh] flex flex-col p-5">
+      <div className="flex justify-center items-center w-[100vw]">
+        <div className="w-[35vw] h-[100vh] flex flex-col p-5">
           <div className="text-2xl">Pablo - Block Programming </div>
           <div className="text-sm">Visually edit the drawing logic. </div>
-          <textarea readOnly>
-            {javascriptCode}
-          </textarea>
+
+          <div className="mt-4">
+            <div> The following is the compiled code: </div>
+            <pre>
+              <code>
+                {javascriptCode}
+              </code>
+            </pre>
+          </div>
           <button className="mt-6"> Begin Sequence </button>
         </div>
 
         <BlocklyWorkspace
           toolboxConfiguration={toolbox}
           initialXml={initialXml}
-          className="w-[80vw] h-[100vh]"
+          className="w-[100%] h-[100vh]"
           workspaceConfiguration={{
             grid: {
               spacing: 20,

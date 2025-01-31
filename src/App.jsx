@@ -4,7 +4,7 @@ import './App.css'
 function App() {
   return (
     <>
-      <div>
+      <div className='flex items-center justify-center flex-col w-[100vw]'>
         <div className='text-7xl font-bold' >
           Choose an Interface
         </div>
