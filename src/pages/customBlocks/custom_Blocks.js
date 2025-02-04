@@ -1,45 +1,81 @@
 import * as Blockly from 'blockly';
-import {pythonGenerator} from 'blockly/python';
 
-Blockly.Blocks['new_boundary_function'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldTextInput("Boundary Function Name"), "Name");
-        this.appendStatementInput("Content")
-            .setCheck(null);
-        this.setInputsInline(true);
-        this.setColour(315);
-        this.setTooltip("");
-        this.setHelpUrl("");
-    }
-};
+export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
+    "type": "forward",
+    "message0": "Move Forward By: %1 Units",
+    "args0": [
+        {
+            "type": "field_input",
+            "name": "STEPS",
+            "check": "Number",
+            "value": 0
+        },
+    ],
+    "previousStatement": null, "nextStatement": null,
+    "colour": 230,
+},
+{
+    "type": "backward",
+    "message0": "Move Backwards By: %1 Units",
+    "args0": [
+        {
+            "type": "field_input",
+            "name": "STEPS",
+            "check": "Number",
+            "value": 0
+        },
+    ],
+    "previousStatement": null, "nextStatement": null,
+    "colour": 230,
+},
+{
+    "type": "rotate_right",
+    "message0": "Rotate Right By: %1 Degrees",
+    "args0": [
+        {
+            "type": "field_input",
+            "name": "STEPS",
+            "check": "Number",
+            "value": 0
+        },
+    ],
+    "previousStatement": null, "nextStatement": null,
+    "colour": 230,
+},
+{
+    "type": "rotate_left",
+    "message0": "Rotate Left By: %1 Degrees",
+    "args0": [
+        {
+            "type": "field_input",
+            "name": "STEPS",
+            "check": "Number",
+            "value": 0
+        },
+    ],
+    "previousStatement": null, "nextStatement": null,
+    "colour": 230,
+},
+{
+    "type": "controls_repeat_ext",
+    "message0": "repeat %1 times",
+    "args0": [
+        {
+            "type": "field_input", 
+            "name": "TIMES",
+            "check": "Number",
+            "value": 0
+        }
+    ],
+    "message1": "do %1",
+    "args1": [
+        { "type": "input_statement", "name": "DO" }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 120
+}
+]);
 
 
-
-pythonGenerator.forBlock['new_boundary_function'] = function (block) {
-    var text_name = block.getFieldValue('Name');
-    var statements_content = Blockly.Python.statementToCode(block, 'Content');
-    // TODO: Assemble Python into code variable.
-    var code = 'def ' + text_name + '(_object,**kwargs):\n' + statements_content + '\n';
-    return code;
-};
-
-Blockly.Blocks['return'] = {
-    init: function () {
-        this.appendValueInput("NAME")
-            .setCheck(null)
-            .appendField("return");
-        this.setInputsInline(false);
-        this.setPreviousStatement(true, null);
-        this.setColour(330);
-        this.setTooltip("");
-        this.setHelpUrl("");
-    }
-};
-
-pythonGenerator.forBlock['return'] = function (block) {
-    var value_name = pythonGenerator.valueToCode(block, 'NAME', Blockly.Python.ORDER_ATOMIC);
-    // TODO: Assemble Python into code variable.
-    var code = 'return ' + value_name + '\n';
-    return code;
-};
+Blockly.common.defineBlocks(blocks);

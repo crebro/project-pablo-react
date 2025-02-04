@@ -1,26 +1,43 @@
-import "../customBlocks/custom_Blocks";
-import React, { useState } from "react";
+import "../customBlocks/custom_blocks";
+import React, { useRef, useState } from "react";
 import { BlocklyWorkspace } from "react-blockly";
-import { javascriptGenerator } from "blockly/javascript";
+import "../customBlocks/custom_blocks";
+import logoGenerator from "../customBlocks/custom_generator";
 import toolbox from "../toolbox/toolbox";
+import axios from "axios";
+import toast from "react-hot-toast";
 import "./index.css";
 
 function BlockProgramming() {
   const [xml, setXml] = useState("");
-  const [javascriptCode, setJavascriptCode] = useState("");
+  const [logoCode, setLogoCode] = useState("");
+  const urlInputRef = useRef();
 
   const initialXml =
-    '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="text" x="70" y="30"><field name="TEXT"></field></block></xml>';
+    '';
 
   function workspaceDidChange(workspace) {
-    const code = javascriptGenerator.workspaceToCode(workspace);
-    setJavascriptCode(code);
+    const code = logoGenerator.workspaceToCode(workspace);
+    setLogoCode(code);
+  }
+
+  function beignSequence() {
+    let postPromise = axios.post(urlInputRef.current.value, { program: logoCode });
+    toast.promise(postPromise, {
+      loading: "Sending code to the server...",
+      success: "Code sent successfully!",
+      error: (e) => { 
+        console.log(e);
+        return "An error occurred while sending the code."; },
+    });
   }
 
   return (
     <>
       <div className="flex justify-center items-center w-[100vw]">
-        <div className="flex-1 h-[100vh] flex flex-col p-5">
+        <div className="flex-1 h-[100vh] flex flex-col p-5 justify-between">
+          <div className="flex flex-col">
+
           <div className="text-2xl">Pablo - Block Programming </div>
           <div className="text-sm">Visually edit the drawing logic. </div>
           <div className="mt-4">
@@ -29,12 +46,18 @@ function BlockProgramming() {
             <div className="mt-4 p-2 bg-gray-700 text-white overflow-x-scroll">
               <pre>
                 <code>
-                  {javascriptCode}
+                  {logoCode}
                 </code>
               </pre>
             </div>
           </div>
-          <button className="mt-6"> Begin Sequence </button>
+          <button className="mt-6" onClick={beignSequence}> Begin Sequence </button>
+          </div>
+
+          <div>
+
+            <input className="mt-6" defaultValue={"http://localhost:5000/start"} ref={urlInputRef} />  
+          </div>
         </div>
 
         <BlocklyWorkspace
