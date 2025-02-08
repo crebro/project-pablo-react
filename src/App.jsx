@@ -4,7 +4,7 @@ import './App.css'
 function InterfaceCard({
   imageUrl, caption
 }) {
-  return <div className="relative grid h-[25rem] max-w-lg flex-col items-end justify-center overflow-hidden rounded-lg bg-white mx-2">
+  return <div className="relative grid h-[25rem] max-w-lg flex-col items-end justify-center overflow-hidden rounded-lg bg-white mx-2 my-2">
     <div className={`absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-transparent bg-cover bg-center`} style={{backgroundImage: `url(${imageUrl})`}}>
       <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
     </div>
@@ -21,12 +21,14 @@ function App() {
   return (
     <>
       <div className='flex items-center justify-center flex-col w-[100vw]'>
-        <div className='text-4xl font-bold' >
+        <div className='text-3xl font-bold my-4' >
           Choose an Interface
         </div>
 
-        <div className='flex mt-10'>
-          <InterfaceCard imageUrl={"/assets/visual.png"} caption={"Visual Programming"} />
+        <div className='flex mt-10 flex-wrap items-center justify-center'>
+          <Link to="/visualprogramming">
+            <InterfaceCard imageUrl={"/assets/visual.png"} caption={"Visual Programming"} />
+          </Link>
           <Link to="/blockprogramming">
             <InterfaceCard imageUrl={"/assets/block.png"} caption={"Block Programming"} />
           </Link>

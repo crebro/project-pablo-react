@@ -74,7 +74,31 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
     "previousStatement": null,
     "nextStatement": null,
     "colour": 120
-}
+},
+{
+    "type": "math_trig",
+    "message0": "%1 %2",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "OP",
+        "options": [
+          ["sin", "SIN"],
+          ["cos", "COS"],
+          ["tan", "TAN"],
+          ["atan", "ATAN"]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "NUM",
+        "check": "Number"
+      }
+    ],
+    "output": "Number",
+    "colour": 230,
+    "tooltip": "Perform a trigonometric function."
+  }
 ]);
 
 

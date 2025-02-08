@@ -2284,6 +2284,11 @@ react-hot-toast@^2.5.1:
     csstype "^3.1.3"
     goober "^2.1.16"
 
+react-image-picker-editor@^1.3.5:
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/react-image-picker-editor/-/react-image-picker-editor-1.3.5.tgz#b1fe5f70d6d9af7af9b3a1171f1d0fd0c1ed08ca"
+  integrity sha512-HgvcjE5EdVHRaj9v7pC5ItfKtwIZgCS7BlHxhoebYxb3Cg7KHl9O4OrosYOszUiKP+Oq8wLWVdH1NMAmdRqKPA==
+
 react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
