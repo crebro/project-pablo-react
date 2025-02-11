@@ -21,6 +21,14 @@ const toolbox = {
           'kind': 'block',
           'type': 'rotate_right'
         },
+        {
+          'kind': 'block',
+          'type': 'pu'
+        },
+        {
+          'kind': 'block',
+          'type': 'pd'
+        },
       ],
       "colour": "210",
     },

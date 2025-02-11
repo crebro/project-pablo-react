@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 import ReactImagePickerEditor from 'react-image-picker-editor';
 import 'react-image-picker-editor/dist/index.css'
+import axios from 'axios';
 
 const dataURLtoFile = (dataurl, filename) => {
     const arr = dataurl.split(',')
@@ -35,7 +36,7 @@ export default function VisualProgramming() {
         const file = dataURLtoFile(imageSrc, 'image.png');
 
         const data = new FormData()
-        data.append('img', file, file.name)
+        data.append('image', file, file.name)
 
         // now upload
         const config = {
@@ -63,7 +64,7 @@ export default function VisualProgramming() {
                     <button className="mt-6 w-full" onClick={beignSequence}> Upload Code </button>
                     <br/>
 
-                    <input className="mt-6" defaultValue={"http://localhost:5000/visualstart"} ref={urlInputRef} />  
+                    <input className="mt-6" defaultValue={"http://192.168.77.183:5000/visualstart"} ref={urlInputRef} />  
                 </div>
             </div>
         </>

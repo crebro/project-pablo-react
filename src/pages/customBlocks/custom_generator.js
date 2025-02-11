@@ -189,5 +189,13 @@ logoGenerator.forBlock['math_trig'] = function(block) {
     }
   };
 
+logoGenerator.forBlock['pu'] = function (block) {
+  return "pu";
+}
+
+logoGenerator.forBlock['pd'] = function (block) {
+  return "pd";
+}
+
 export default logoGenerator;
 

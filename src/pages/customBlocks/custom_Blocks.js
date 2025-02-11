@@ -98,7 +98,17 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
     "output": "Number",
     "colour": 230,
     "tooltip": "Perform a trigonometric function."
-  }
+  },
+  {"type": "pu",
+    "message0": "Pen Up",
+    "previousStatement": null, "nextStatement": null,
+    "colour": 230,
+    },
+    {"type": "pd",
+        "message0": "Pen Down",
+        "previousStatement": null, "nextStatement": null,
+        "colour": 230,
+        }
 ]);
 
 
